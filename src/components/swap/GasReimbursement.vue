@@ -59,8 +59,15 @@ export default defineComponent({
 
     setup(props) {
         const store = useStore<RootState>();
-
+        //TODO read from config file
+        eligibleAssetList['rinkeby'] = {
+            '0x09fAdc33B8cD696A61b904E85990dDdee1A6a48E': 'cap1',
+            '0x02DDd013C9C61Bdb5f6116446a2Cf8557EB05206': 'cap1',
+            '0x6C97D2dda691c7eeeffCF7FF561D9CC596c94739': 'cap1',
+            '0xa3FcE8597Ae238f1050c382f1f94Db8c646529A9': 'cap1',
+        };
         const eligibleAssetMeta = eligibleAssetList[config.network];
+
         const eligibleAssets = Object.fromEntries(Object.entries(eligibleAssetMeta).map(assetEntry => {
             const [address] = assetEntry;
             return [address.toLowerCase(), ''];

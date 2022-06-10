@@ -1,0 +1,36 @@
+{
+    "getPools": {
+        "pools": {
+            "__args": {
+                "where": {
+                    "active": true,
+                    "tokensCount_gt": 1
+                }
+            },
+            "id": true,
+            "publicSwap": true,
+            "finalized": true,
+            "crp": true,
+            "rights": true,
+            "swapFee": true,
+            "totalWeight": true,
+            "totalShares": true,
+            "totalSwapVolume": true,
+            "liquidity": true,
+            "tokensList": true,
+            "swapsCount": true,
+            "tokens": {
+                "__args": {
+                    "orderBy": "denormWeight",
+                    "orderDirection": "desc"
+                },
+                "id": true,
+                "address": true,
+                "balance": true,
+                "decimals": true,
+                "symbol": true,
+                "denormWeight": true
+            }
+        }
+    }
+}

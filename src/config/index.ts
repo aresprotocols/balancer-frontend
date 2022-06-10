@@ -1,5 +1,6 @@
 import homestead from './homestead.json';
 import kovan from './kovan.json';
+import rinkeby from './ares_rinkeby.json';
 
 interface Connector {
     id: string;
@@ -30,6 +31,7 @@ interface Config {
         exchangeProxy: string;
         weth: string;
         multicall: string;
+        sorMulticall: string | null;
     };
     assets: Record<string, AssetMetadata>;
     untrusted: string[];
@@ -44,6 +46,10 @@ const configs = {
     42:{
         untrusted: [],
         ...kovan,
+    },
+    4:{
+        untrusted: [],
+        ...rinkeby,
     },
 };
 // eslint-disable-next-line no-undef

@@ -82,6 +82,7 @@ import SwapButton from '@/components/swap/Button.vue';
 import SwapPair from '@/components/swap/Pair.vue';
 import GasReimbursement from '@/components/swap/GasReimbursement.vue';
 import { setGoal } from '@/utils/fathom';
+import { formatPool, request } from '@/utils/subgraph';
 
 // eslint-disable-next-line no-undef
 const GAS_PRICE = process.env.APP_GAS_PRICE || '100000000000';
@@ -292,6 +293,9 @@ export default defineComponent({
 
         async function initSor(): Promise<void> {
             const poolsUrl = `${config.subgraphBackupUrl}?timestamp=${Date.now()}`;
+            //TODO read from subgraph
+            const pools = await getPools({});
+
             sor = new SOR(
                 provider,
                 new BigNumber(GAS_PRICE),
@@ -300,6 +304,12 @@ export default defineComponent({
                 poolsUrl,
             );
 
+            sor.pools.getAllPublicSwapPools = function(url: any): any{
+                return { pools };
+            };
+            if(config.addresses.sorMulticall){
+                sor.MULTIADDR[config.chainId] = config.addresses.sorMulticall;
+            }
             const assetInAddress = assetInAddressInput.value === ETH_KEY
                 ? config.addresses.weth
                 : assetInAddressInput.value;
@@ -498,6 +508,43 @@ export default defineComponent({
                 return true;
             }
             return false;
+        }
+
+        async function getPools (payload: any): Promise<any> {
+            const {
+                first = 20,
+                page = 1,
+                orderBy = 'liquidity',
+                orderDirection = 'desc',
+                where = {},
+            } = payload;
+
+            const skip = (page - 1) * first;
+
+            const ts = Math.round(new Date().getTime() / 1000);
+            const tsYesterday = ts - 24 * 3600;
+            const tsYesterdayRounded = Math.round(tsYesterday / 3600) * 3600; // Round timestamp by hour to leverage subgraph cache
+
+            // where.tokensList_not = [];
+            const query = {
+                pools: {
+                    __args: {
+                        where,
+                        first,
+                        skip,
+                        orderBy,
+                        orderDirection,
+                    },
+                },
+            };
+            // commit('GET_POOLS_REQUEST');
+            try {
+                let { pools } = await request('getPools', query);
+                pools = pools.map((pool: any) => formatPool(pool));
+                return pools;
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         return {
