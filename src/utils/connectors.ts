@@ -1,7 +1,7 @@
 import { Lock } from '@snapshot-labs/lock/src';
 import injected from '@snapshot-labs/lock/connectors/injected';
 import fortmatic from '@snapshot-labs/lock/connectors/fortmatic';
-import portis from '@snapshot-labs/lock/connectors/portis';
+// import portis from '@snapshot-labs/lock/connectors/portis';
 import walletconnect from '@snapshot-labs/lock/connectors/walletconnect';
 import walletlink from '@snapshot-labs/lock/connectors/walletlink';
 
@@ -10,7 +10,7 @@ import fortmaticLogo from '@/assets/connector/fortmatic.svg';
 import frameLogo from '@/assets/connector/frame.svg';
 import imtokenLogo from '@/assets/connector/imtoken.svg';
 import metamaskLogo from '@/assets/connector/metamask.svg';
-import portisLogo from '@/assets/connector/portis.svg';
+// import portisLogo from '@/assets/connector/portis.svg';
 import statusLogo from '@/assets/connector/status.svg';
 import trustwalletLogo from '@/assets/connector/trustwallet.svg';
 import walletconnectLogo from '@/assets/connector/walletconnect.svg';
@@ -20,7 +20,7 @@ import config from '@/config';
 
 const lock = new Lock();
 
-const connectors = { injected, fortmatic, portis, walletconnect, walletlink };
+const connectors = { injected, fortmatic, /*portis,*/ walletconnect, walletlink };
 
 for (const connectorId in connectors) {
     const connector = {
@@ -58,9 +58,9 @@ export function getConnectorName(connectorId: string): string {
     if (connectorId === 'fortmatic') {
         return 'Fortmatic';
     }
-    if (connectorId === 'portis') {
-        return 'Portis';
-    }
+    // if (connectorId === 'portis') {
+    //     return 'Portis';
+    // }
     if (connectorId === 'walletconnect') {
         return 'WalletConnect';
     }
@@ -93,9 +93,9 @@ export function getConnectorLogo(connectorId: string): string {
     if (connectorId === 'fortmatic') {
         return fortmaticLogo;
     }
-    if (connectorId === 'portis') {
-        return portisLogo;
-    }
+    // if (connectorId === 'portis') {
+    //     return portisLogo;
+    // }
     if (connectorId === 'walletconnect') {
         return walletconnectLogo;
     }
