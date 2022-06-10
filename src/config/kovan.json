@@ -26,7 +26,7 @@
             "dappId": "3f1c3cfc-7dd5-4e8a-aa03-71ff7396d9fe"
         },
         "walletlink": {
-            "appName": "Balancer Exchange",
+            "appName": "BootstrapNFT",
             "darkMode": true,
             "chainId": 42,
             "ethJsonrpcUrl": "https://kovan.infura.io/v3/237c3102f39b4940abbe12dc49165cd6"

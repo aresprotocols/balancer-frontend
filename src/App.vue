@@ -94,13 +94,15 @@ export default defineComponent({
 }
 
 [data-theme="dark"] {
-    --background-primary: #1c1d26;
-    --background-secondary: #21222c;
-    --background-control: #1f2029;
-    --background-hover: #20222c;
-    --border: #333;
-    --text-primary: #fff;
-    --text-secondary: #98aab4;
+  --header-background: #10083B;
+  --background-primary: rgba(16, 8, 59, 0.9);
+  /*--background-secondary: #21222c;*/
+  --background-secondary: rgba(16, 8, 59, 0.9);
+  --background-control: #1f2029;
+  --background-hover: #20222c;
+  --border: #5025FA;
+  --text-primary: #fff;
+  --text-secondary: #98aab4;
 }
 
 body {

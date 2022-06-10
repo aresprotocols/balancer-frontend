@@ -9,7 +9,7 @@
                     class="logo"
                     :title="'brand'"
                 />
-                <span class="title">Balancer</span>
+                <span class="title"></span>
             </router-link>
             <a
                 v-if="isDev"
@@ -105,14 +105,15 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--background-primary);
+    background: var(--header-background);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #5025FA;
 }
 
 .header-left {
     display: flex;
-    align-items: flex-end;
+    /*align-items: flex-end;*/
+    align-items: center;
 }
 
 .header-right {
@@ -128,12 +129,12 @@ a {
 .brand {
     margin-left: 20px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    /*align-items: flex-end;*/
 }
 
 .logo {
-    height: 22px;
-    width: 27px;
+    width: 100px;
 }
 
 .title {
@@ -171,6 +172,12 @@ a {
 
 .account {
     margin: 0 16px;
+    background: #5025FA;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.account:hover {
+    background: #3f11f5;
 }
 
 @media only screen and (max-width: 768px) {

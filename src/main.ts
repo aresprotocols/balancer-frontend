@@ -3,6 +3,7 @@ import { createWebHashHistory, createRouter } from 'vue-router';
 import store from './store';
 import '@/utils/fathom';
 
+// ts-ignore
 import App from './App.vue';
 
 import Swap from './pages/Swap.vue';

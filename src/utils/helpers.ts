@@ -28,6 +28,7 @@ export function formatDate(timestamp: number): string {
         minute: 'numeric',
     };
     const date = new Date(timestamp);
+    // @ts-ignore
     return date.toLocaleString('en-US', options);
 }
 
