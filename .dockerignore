@@ -1,6 +1,6 @@
-dist/
 node_modules/
-.env
-.idea
-.yarn/cache
+.idea/
+.github/
+.yarn/cache/
 .yarn/install-state.gz
+.env

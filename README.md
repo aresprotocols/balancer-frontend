@@ -12,7 +12,7 @@ APP_GAS_PRICE=100000000000
 Run & build:
 
 ```
-npm install
-npm run serve
-npm run build
+yarn install
+yarn run serve
+yarn run build
 ```
